@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "smp_renode"
+version = "0.1.0"
+description = "SMPClient support with Renode to simulate DFU over BLE"
+authors = ["Victor Chavez <vchavezb@protonmail.com>"]
+packages = []
+readme = "README.md"
+license = "GPL-3.0"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.14"
+smpclient =  "^5.0.0"
+bleak = { git = "https://github.com/vChavezB/bleak.git", rev = "bumble" , extras = ["bumble"]}
+pyrenode3 = { git = "https://github.com/antmicro/pyrenode3.git", rev="0b23dca",  extras = ["all"] }
+rich = "^14.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+

@@ -1,0 +1,40 @@
+# Copyright (c) 2025, Victor Chavez (vchavezb@protonmail.com)
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+name: Test
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+    container: 
+      image: antmicro/renode:1.15.3
+      options: --user root
+    env:
+      HCI_PORT: 1230
+      BLEAK_BUMBLE: "tcp-client:127.0.0.1:1230"
+    steps:   
+      - name: Check renode
+        run: |
+          renode --version
+      - name: Install git
+        run: |
+          apt-get update
+          apt-get install git -y
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Pyrenode3 deps
+        run: |
+          apt-get install mono-devel -y
+
+      - name : Install Python dependencies
+        run: |
+          pip3 install poetry
+          poetry install
+
+      - name: Run
+        run: |
+          poetry run python3 smp_renode/virtual_dfu.py zephyr/hex/smp_hci_uart_nrf52840.hex zephyr/dfu/2.0.1.bin --port=${HCI_PORT} --timeout=20

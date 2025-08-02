@@ -1,0 +1,25 @@
+# Copyright (c) 2025, Victor Chavez (vchavezb@protonmail.com)
+# SPDX-License-Identifier: GPL-3.0-or-later
+manifest:
+
+  remotes:
+    - name: zephyrproject-rtos
+      url-base: https://github.com/zephyrproject-rtos
+
+  projects:
+    - name: zephyr
+      remote: zephyrproject-rtos
+      revision: v4.0.0
+      path: zephyr
+      import:
+        name-allowlist:
+          - cmsis
+          - segger
+          - nrfxlib
+          - mcuboot
+          - zcbor
+          - mbedtls
+          - tinycrypt
+          - littlefs
+          - hal_nordic
+      clone-depth: 1
