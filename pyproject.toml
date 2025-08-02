@@ -9,8 +9,9 @@ license = "GPL-3.0"
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.14"
-smpclient =  "^5.0.0"
-bleak = { git = "https://github.com/vChavezB/bleak.git", rev = "bumble" , extras = ["bumble"]}
+smpclient =  { git = "https://github.com/vChavezB/smpclient.git", rev = "bleak_v1.0.1"}
+bleak = { git = "https://github.com/vChavezB/bleak.git", rev = "0c655d06cdd1c92df4f9aa391f7ac7f86c0826c2",extras = ["bumble"] }
+bumble = { version = "0.0.211"}
 pyrenode3 = { git = "https://github.com/antmicro/pyrenode3.git", rev="0b23dca",  extras = ["all"] }
 rich = "^14.1.0"
 
